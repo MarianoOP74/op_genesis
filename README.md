@@ -33,3 +33,7 @@ Edit or add originals in `assets/source-images/`, then regenerate the WebP varia
 ```bash
 npm run images
 ```
+
+## Deployment
+
+The site is hosted on Vercel, connected to this GitHub repository. Every push to `main` builds and deploys to production automatically (Framework preset: Next.js, default build settings).
