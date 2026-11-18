@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { counties, faqs, site } from "@/lib/content";
 import "./globals.css";
 
 const inter = Inter({
@@ -8,116 +9,61 @@ const inter = Inter({
   display: "swap"
 });
 
-const siteUrl = "https://www.opgenesis.com";
-const siteDescription =
-  "GPS-tracked, HIPAA-compliant medical courier services for hospitals, labs, and pharmacies in Orlando, FL. Real-time dispatch. Monthly analytics. Request a demo.";
+const title = "Medical Courier Service Orlando, FL — OP Genesis Healthcare Logistics";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: "Medical Courier Service Orlando, FL — OP Genesis Healthcare Logistics",
-  description: siteDescription,
+  metadataBase: new URL(site.url),
+  title,
+  description: site.description,
   alternates: {
-    canonical: siteUrl
+    canonical: "/"
   },
   openGraph: {
-    title: "Medical Courier Service Orlando, FL — OP Genesis Healthcare Logistics",
-    description: siteDescription,
-    url: siteUrl,
-    siteName: "OP Genesis",
+    title,
+    description: site.description,
+    url: "/",
+    siteName: site.name,
     locale: "en_US",
     type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description: site.description
   }
 };
 
+// Service-area business: no street address is published (only city/region/ZIP).
+// Add `streetAddress` here if a public storefront address should be listed.
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "OP Genesis Healthcare Logistics Solutions",
-  description:
-    "HIPAA-compliant medical courier services for hospitals, labs, and pharmacies in Orlando, Florida.",
-  url: siteUrl,
-  telephone: "+1-407-874-7361",
-  email: "contact@opgenesis.com",
+  name: site.legalName,
+  description: "HIPAA-compliant medical courier services for hospitals, labs, and pharmacies in Orlando, Florida.",
+  url: site.url,
+  image: `${site.url}/opengraph-image.jpg`,
+  logo: `${site.url}/icon.png`,
+  telephone: site.phoneE164,
+  email: site.email,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "YOUR STREET ADDRESS",
-    addressLocality: "Orlando",
-    addressRegion: "FL",
-    postalCode: "32856",
+    addressLocality: site.city,
+    addressRegion: site.region,
+    postalCode: site.postalCode,
     addressCountry: "US"
   },
-  areaServed: [
-    "Orlando",
-    "Orange County",
-    "Seminole County",
-    "Osceola County",
-    "Lake County",
-    "Volusia County",
-    "Central Florida"
-  ],
-  serviceType: [
-    "Medical Courier",
-    "Specimen Transport",
-    "Pharmacy Delivery",
-    "STAT Courier",
-    "Lab-to-Lab Transfer"
-  ],
-  hasCredential: "HIPAA Compliant"
+  areaServed: [site.city, ...counties.map((c) => `${c} County`), "Central Florida"],
+  serviceType: ["Medical Courier", "Specimen Transport", "Pharmacy Delivery", "STAT Courier", "Lab-to-Lab Transfer"]
 };
 
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What areas does OP Genesis serve?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "OP Genesis provides medical courier services throughout the Orlando metropolitan area and central Florida, including Orange, Seminole, Osceola, Lake, and Volusia counties."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Is OP Genesis HIPAA compliant?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. OP Genesis maintains full HIPAA compliance on all deliveries, including digital chain of custody documentation, secure handling protocols, and trained staff requirements."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "What types of medical items does OP Genesis transport?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "OP Genesis transports laboratory specimens, STAT and emergency deliveries, pharmaceutical medications, medical supplies, temperature-controlled items, and lab-to-lab transfers."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "How does OP Genesis handle delivery delays?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Our dispatch system monitors every driver's position in real time against live traffic data. When a delay is detected, the pickup is automatically reassigned and your contact receives an immediate update before the delay affects your operation."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Does OP Genesis provide proof of delivery?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. Every delivery includes digital chain of custody documentation with timestamped pickup and delivery confirmation, driver identification, and recipient sign-off."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "How do I start service with OP Genesis?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Request a 20-minute demo call through our website. We'll review your pickup locations, delivery volume, and service requirements, then provide a tailored proposal within one business day."
-      }
-    }
-  ]
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: { "@type": "Answer", text: faq.answer }
+  }))
 };
 
 const serviceSchema = {
@@ -126,7 +72,7 @@ const serviceSchema = {
   name: "Medical Courier Service",
   provider: {
     "@type": "LocalBusiness",
-    name: "OP Genesis Healthcare Logistics Solutions"
+    name: site.legalName
   },
   areaServed: "Orlando, FL and Central Florida",
   description:
@@ -141,23 +87,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.variable}>
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(localBusinessSchema)
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(faqSchema)
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(serviceSchema)
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify([localBusinessSchema, faqSchema, serviceSchema]) }}
         />
         {children}
       </body>

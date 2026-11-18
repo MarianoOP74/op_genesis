@@ -7,16 +7,17 @@ import {
   IconClock,
   IconLock,
   IconMapPin,
-  IconMenu2,
   IconPill,
   IconRefresh,
-  IconRoute,
   IconShieldCheck,
   IconTemperature,
   IconTestPipe,
   IconTruckDelivery,
   IconUrgent
 } from "@tabler/icons-react";
+import { MobileMenu } from "@/components/MobileMenu";
+import { Photo } from "@/components/Photo";
+import { careersMailto, counties, demoMailto, faqs, site } from "@/lib/content";
 
 const stats = [
   { value: "99.6%", label: "On-time rate" },
@@ -71,49 +72,14 @@ const services = [
   { icon: IconClipboardCheck, label: "Compliance Reporting" }
 ];
 
-const serviceAreas = ["Orange", "Seminole", "Osceola", "Lake", "Volusia"];
-
-const faqs = [
-  {
-    question: "What areas does OP Genesis serve?",
-    answer:
-      "OP Genesis provides medical courier services throughout the Orlando metropolitan area and central Florida, including Orange, Seminole, Osceola, Lake, and Volusia counties. Service area expansions are available for healthcare networks with multi-location needs across the state."
-  },
-  {
-    question: "Is OP Genesis HIPAA compliant?",
-    answer:
-      "Yes. OP Genesis maintains full HIPAA compliance on all deliveries, including digital chain of custody documentation, secure handling protocols, and trained staff requirements. Compliance documentation is available upon request."
-  },
-  {
-    question: "What types of medical items does OP Genesis transport?",
-    answer:
-      "OP Genesis transports laboratory specimens, STAT and emergency deliveries, pharmaceutical medications, medical supplies, temperature-controlled items, and lab-to-lab transfers for hospital networks, clinical laboratories, and pharmacies across Florida."
-  },
-  {
-    question: "How does OP Genesis handle delivery delays?",
-    answer:
-      "Our dispatch system monitors every driver's position in real time against live traffic data. When a delay is detected, the pickup is automatically reassigned to a nearby driver and your designated contact receives an immediate text and email update — before the delay affects your operation. No phone calls required."
-  },
-  {
-    question: "Does OP Genesis provide proof of delivery?",
-    answer:
-      "Yes. Every delivery includes digital chain of custody documentation with timestamped pickup and delivery confirmation, driver identification, and recipient sign-off. Records are available through your client portal."
-  },
-  {
-    question: "How do I start service with OP Genesis?",
-    answer:
-      "Request a 20-minute demo call through our website. We'll review your pickup locations, delivery volume, and service requirements, then provide a tailored proposal within one business day."
-  }
-];
-
 function Logo({ inverse = false }: { inverse?: boolean }) {
   return (
     <div className={`logo-wrap ${inverse ? "logo-wrap-dark" : ""}`}>
       <img
-        src="./images/op-genesis-wordmark.png"
+        src="/images/op-genesis-wordmark.webp"
         alt="OP Genesis"
-        width={1402}
-        height={224}
+        width={400}
+        height={64}
         className="logo-wordmark"
       />
     </div>
@@ -123,10 +89,12 @@ function Logo({ inverse = false }: { inverse?: boolean }) {
 function Emblem({ className = "" }: { className?: string }) {
   return (
     <img
-      src="./images/op-genesis-emblem.png"
+      src="/images/op-genesis-emblem.webp"
       alt=""
-      width={904}
-      height={661}
+      width={640}
+      height={468}
+      loading="lazy"
+      decoding="async"
       className={`select-none ${className}`}
       aria-hidden="true"
     />
@@ -144,6 +112,9 @@ function Navigation() {
           <a className="nav-link" href="#solutions">
             Solutions
           </a>
+          <a className="nav-link" href="#services">
+            Services
+          </a>
           <a className="nav-link" href="#about">
             About
           </a>
@@ -154,25 +125,7 @@ function Navigation() {
             Request a Demo
           </a>
         </div>
-        <details className="group relative md:hidden">
-          <summary className="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-md border border-[var(--op-gray-border)] text-[var(--op-navy)] [&::-webkit-details-marker]:hidden">
-            <IconMenu2 size={20} />
-          </summary>
-          <div className="absolute right-0 top-12 w-56 rounded-lg border border-[var(--op-gray-border)] bg-white p-3 shadow-lg">
-            {["Solutions", "About", "Contact"].map((item) => (
-              <a
-                key={item}
-                href={item === "Solutions" ? "#solutions" : item === "About" ? "#about" : "#contact"}
-                className="block rounded-md px-3 py-2 text-[13px] text-[var(--op-gray-text)] hover:bg-[var(--op-navy-light)] hover:text-[var(--op-navy)]"
-              >
-                {item}
-              </a>
-            ))}
-            <a className="btn-primary mt-2 w-full px-4 py-2 text-[13px]" href="#contact">
-              Request a Demo
-            </a>
-          </div>
-        </details>
+        <MobileMenu />
       </nav>
     </header>
   );
@@ -181,12 +134,15 @@ function Navigation() {
 function HeroVisual() {
   return (
     <div className="hero-visual hero-photo-card">
-      <img
-        src="./images/hero-image.png"
+      <Photo
+        name="hero-image"
+        widths={[640, 1024, 1600]}
+        sizes="(max-width: 1023px) 100vw, 420px"
         alt="Medical courier collecting a secure specimen package outside a healthcare facility"
-        width={1680}
-        height={900}
+        width={1672}
+        height={941}
         className="section-photo"
+        priority
       />
     </div>
   );
@@ -223,7 +179,7 @@ function Hero() {
             {trustPills.map((pill) => (
               <span key={pill} className="trust-pill">
                 <span className="trust-check">
-                  <IconCheck size={11} />
+                  <IconCheck size={11} aria-hidden="true" />
                 </span>
                 {pill}
               </span>
@@ -316,7 +272,7 @@ function Problem() {
 
 function Solution() {
   return (
-    <section id="how-it-works" className="section-shell bg-white">
+    <section id="how-it-works" className="section-shell scroll-mt-16 bg-white">
       <div className="content-shell grid grid-cols-2 items-start gap-12 max-md:flex max-md:flex-col-reverse">
         <div>
           <p className="section-label">The OP Genesis way</p>
@@ -332,11 +288,13 @@ function Solution() {
         </div>
         <div>
           <div className="solution-photo-card">
-            <img
-              src="./images/section2-the-solution.png"
+            <Photo
+              name="section2-the-solution"
+              widths={[640, 1024]}
+              sizes="(max-width: 767px) 100vw, 530px"
               alt="Courier using route tracking inside a delivery vehicle"
-              width={1480}
-              height={1100}
+              width={1448}
+              height={1086}
               className="section-photo"
             />
           </div>
@@ -346,7 +304,7 @@ function Solution() {
               <span className="status-pill">Resolved automatically</span>
             </div>
             <p className="mb-2.5 text-[13px] leading-[1.6] text-[var(--op-gray-text)]">
-              Your specimen pickup from Orlando Health Clinic #7 has been reassigned due to traffic on I-4. Driver #7 is
+              Your specimen pickup from Lakeside Family Clinic has been reassigned due to traffic on I-4. Driver #7 is
               en route.
             </p>
             <p className="mb-3.5 text-sm font-medium text-[var(--op-navy)]">New ETA: 2:16 PM</p>
@@ -366,7 +324,7 @@ function Solution() {
 
 function Pillars() {
   return (
-    <section id="solutions" className="section-shell bg-[var(--op-gray-bg)]">
+    <section id="solutions" className="section-shell scroll-mt-16 bg-[var(--op-gray-bg)]">
       <div className="content-shell">
         <div className="section-heading-row">
           <div>
@@ -383,8 +341,10 @@ function Pillars() {
             return (
               <article key={pillar.title} className="feature-card">
                 {pillar.title === "Intelligent Dispatch" ? (
-                  <img
-                    src="./images/pillarcard2-intelligent-dispatch.png"
+                  <Photo
+                    name="pillarcard2-intelligent-dispatch"
+                    widths={[640, 1024]}
+                    sizes="(max-width: 767px) 100vw, 360px"
                     alt="Dispatcher monitoring live fleet routing screens"
                     width={1536}
                     height={1024}
@@ -430,8 +390,8 @@ function MonthlyReport() {
         </div>
         <div className="overflow-hidden rounded-xl border border-[var(--op-gray-border)] bg-white shadow-[0_18px_50px_rgba(10,42,110,0.07)]">
           <div className="bg-[var(--op-navy)] px-5 py-3.5">
-            <p className="mb-[3px] text-[11px] uppercase tracking-[0.06em] text-white/50">Monthly Report · May 2026</p>
-            <p className="m-0 text-sm font-medium text-white">Orlando Health Network</p>
+            <p className="mb-[3px] text-[11px] uppercase tracking-[0.06em] text-white/70">Monthly Report · May 2026</p>
+            <p className="m-0 text-sm font-medium text-white">Sample Client · Regional Hospital Network</p>
           </div>
           <div>
             {reportRows.map(([label, value]) => (
@@ -467,7 +427,7 @@ function MonthlyReport() {
 
 function Services() {
   return (
-    <section className="section-shell bg-[var(--op-gray-bg)]">
+    <section id="services" className="section-shell scroll-mt-16 bg-[var(--op-gray-bg)]">
       <div className="content-shell">
         <div className="section-heading-row">
           <div>
@@ -479,7 +439,7 @@ function Services() {
           <div className="service-area-card">
             <p className="micro-label">Service area</p>
             <div className="mt-3 flex flex-wrap gap-2">
-              {serviceAreas.map((area) => (
+              {counties.map((area) => (
                 <span key={area} className="area-chip">
                   {area}
                 </span>
@@ -488,11 +448,13 @@ function Services() {
           </div>
         </div>
         <div className="services-photo-card">
-          <img
-            src="./images/services-section.png"
+          <Photo
+            name="services-section"
+            widths={[640, 1024, 1600]}
+            sizes="(max-width: 1100px) 100vw, 1100px"
             alt="Clinical laboratory with temperature-controlled medical storage"
-            width={1680}
-            height={900}
+            width={1672}
+            height={941}
             className="section-photo"
           />
         </div>
@@ -567,7 +529,7 @@ function Why() {
 
 function About() {
   return (
-    <section id="about" className="bg-[var(--op-gray-bg)] px-6 py-12">
+    <section id="about" className="scroll-mt-16 bg-[var(--op-gray-bg)] px-6 py-12">
       <div className="mx-auto max-w-[760px] rounded-2xl border border-[var(--op-gray-border)] bg-white px-8 py-7 text-center shadow-[0_14px_40px_rgba(10,42,110,0.04)] max-md:px-5">
         <p className="m-0 text-sm leading-[1.8] text-[var(--op-gray-text)]">
           OP Genesis is a HIPAA-compliant healthcare logistics company based in Orlando, Florida. Founded to serve the
@@ -599,7 +561,7 @@ function FAQ() {
               <summary>
                 <span>{faq.question}</span>
                 <span className="faq-icon">
-                  <IconChevronDown size={18} />
+                  <IconChevronDown size={18} aria-hidden="true" />
                 </span>
               </summary>
               <p>{faq.answer}</p>
@@ -623,10 +585,10 @@ function FinalCTA() {
           Schedule a 20-minute call and we&apos;ll show you exactly what reliable medical logistics looks like for your
           operation. No commitment. Just the platform.
         </p>
-        <a className="btn-teal px-8 py-3.5 text-[15px]" href="mailto:contact@opgenesis.com?subject=OP%20Genesis%20Demo%20Request">
+        <a className="btn-teal px-8 py-3.5 text-[15px]" href={demoMailto}>
           Book a Demo
         </a>
-        <p className="mt-3.5 text-[13px] text-white/45">We typically respond within one business day.</p>
+        <p className="mt-3.5 text-[13px] text-white/65">We typically respond within one business day.</p>
       </div>
     </section>
   );
@@ -639,7 +601,7 @@ function Footer() {
         <div className="grid grid-cols-4 gap-10 max-md:grid-cols-1">
           <div>
             <Logo inverse />
-            <p className="mt-3 text-[13px] text-white/55">Delivering Care. Every Time.</p>
+            <p className="mt-3 text-[13px] text-white/70">Delivering Care. Every Time.</p>
           </div>
           <FooterColumn
             title="Services"
@@ -653,7 +615,7 @@ function Footer() {
             <a className="footer-link" href="#how-it-works">
               Our Approach
             </a>
-            <a className="footer-link" href="mailto:contact@opgenesis.com">
+            <a className="footer-link" href={careersMailto}>
               Careers
             </a>
             <a className="btn-teal mt-2 px-4 py-2 text-[13px]" href="#contact">
@@ -662,29 +624,31 @@ function Footer() {
           </div>
           <div>
             <h3 className="footer-heading">Contact</h3>
-            <a className="footer-link" href="tel:+14078747361">
-              407-874-7361
+            <a className="footer-link" href={site.phoneHref}>
+              {site.phoneDisplay}
             </a>
-            <a className="footer-link" href="mailto:contact@opgenesis.com">
-              contact@opgenesis.com
+            <a className="footer-link" href={`mailto:${site.email}`}>
+              {site.email}
             </a>
-            <p className="m-0 text-[13px] leading-8 text-white/65">Orlando, FL 32856</p>
+            <p className="m-0 text-[13px] leading-8 text-white/70">
+              {site.city}, {site.region} {site.postalCode}
+            </p>
           </div>
         </div>
         <div className="mt-12 flex items-center justify-between gap-6 border-t border-white/10 pt-6 max-md:flex-col max-md:items-start">
-          <p className="m-0 flex flex-wrap gap-3 text-xs text-white/45">
+          <p className="m-0 flex flex-wrap gap-3 text-xs text-white/65">
             <span>HIPAA Compliant</span>
             <span>·</span>
             <span>Florida DOH Registered</span>
             <span>·</span>
             <span>Licensed & Insured</span>
           </p>
-          <p className="m-0 max-w-[520px] text-xs text-white/35">
+          <p className="m-0 max-w-[520px] text-xs text-white/60">
             OP Genesis Healthcare Logistics Solutions Serving Orlando, Orange County, Seminole County, Osceola County,
             and central Florida.
           </p>
         </div>
-        <p className="mt-4 text-xs text-white/35">
+        <p className="mt-4 text-xs text-white/60">
           © 2026 OP Genesis Healthcare Logistics Solutions. All rights reserved.
         </p>
       </div>
@@ -697,7 +661,7 @@ function FooterColumn({ title, links }: { title: string; links: string[] }) {
     <div>
       <h3 className="footer-heading">{title}</h3>
       {links.map((link) => (
-        <a key={link} className="footer-link" href="#solutions">
+        <a key={link} className="footer-link" href="#services">
           {link}
         </a>
       ))}
@@ -709,7 +673,7 @@ export default function Home() {
   return (
     <>
       <Navigation />
-      <main>
+      <main id="main">
         <Hero />
         <StatsBar />
         <Problem />
