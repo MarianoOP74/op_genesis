@@ -39,7 +39,8 @@ const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: site.legalName,
-  description: "HIPAA-compliant medical courier services for hospitals, labs, and pharmacies in Orlando, Florida.",
+  description:
+    "GPS-tracked medical courier services with electronic chain of custody for hospitals, labs, and pharmacies in Orlando, Florida.",
   url: site.url,
   image: `${site.url}/opengraph-image.jpg`,
   logo: `${site.url}/icon.png`,
@@ -76,7 +77,7 @@ const serviceSchema = {
   },
   areaServed: "Orlando, FL and Central Florida",
   description:
-    "GPS-tracked, HIPAA-compliant medical courier and specimen transport services for hospitals, clinical laboratories, and pharmacies in central Florida."
+    "GPS-tracked medical courier and specimen transport services with electronic chain of custody for hospitals, clinical laboratories, and pharmacies in central Florida."
 };
 
 export default function RootLayout({

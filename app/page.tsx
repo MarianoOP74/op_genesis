@@ -19,57 +19,59 @@ import { MobileMenu } from "@/components/MobileMenu";
 import { Photo } from "@/components/Photo";
 import { careersMailto, counties, demoMailto, faqs, site } from "@/lib/content";
 
+// Service commitments included with every contract (not performance results).
 const stats = [
-  { value: "99.6%", label: "On-time rate" },
-  { value: "32 min", label: "Avg delivery time" },
-  { value: "4.2 min", label: "Avg response time" },
-  { value: "4.9/5", label: "Client satisfaction" }
+  { value: "Every route", label: "GPS-tracked" },
+  { value: "Every delivery", label: "Electronic chain of custody" },
+  { value: "Every month", label: "Performance report included" },
+  { value: "30–60 days", label: "No-risk pilot route" }
 ];
 
 const trustPills = [
-  "HIPAA Compliant",
-  "Florida DOH Registered",
-  "Licensed & Insured",
-  "Digital Chain of Custody"
+  "GPS-Tracked Routes",
+  "Electronic Chain of Custody",
+  "Digital Proof of Delivery",
+  "Monthly Performance Reports"
 ];
 
 const pillars = [
   {
     icon: IconMapPin,
-    title: "Live Fleet Visibility",
-    body: "Every driver. Every vehicle. Every pickup — tracked in real time with live ETAs visible to your team 24/7."
+    title: "Live Route Visibility",
+    body: "Every pickup is GPS-tracked from collection to delivery, with ETA updates shared with your team."
   },
   {
     icon: IconRefresh,
-    title: "Intelligent Dispatch",
-    body: "Delays are detected early, routes are recalculated, and pickups are reassigned before disruption reaches your team."
+    title: "Proactive Dispatch",
+    body: "Routes are optimized daily and monitored throughout the day, so delays are caught early and you hear about them from us first."
   },
   {
     icon: IconChartBar,
     title: "Monthly Intelligence Reports",
-    body: "On-time rates, delivery times, fuel savings, and forward-looking recommendations arrive every month."
+    body: "On-time rate, delivery times, STAT performance, and route recommendations — included with every recurring contract."
   }
 ];
 
+// Illustrative sample only — shows the report format, not real client results.
 const reportRows = [
-  ["Total deliveries", "2,485"],
-  ["On-time rate", "99.6%"],
-  ["Average delivery time", "32 min"],
-  ["Emergency deliveries", "41"],
-  ["Miles optimized", "2,120"],
-  ["Estimated fuel saved", "$730"],
-  ["CO2 reduction", "640 lbs"]
+  ["Total deliveries", "Tracked"],
+  ["On-time rate", "Tracked"],
+  ["Average pickup-to-delivery time", "Tracked"],
+  ["STAT deliveries", "Tracked"],
+  ["Chain-of-custody records complete", "Tracked"],
+  ["Average STAT response time", "Tracked"],
+  ["Route recommendations", "Included"]
 ];
 
 const services = [
   { icon: IconTestPipe, label: "Specimen Transport" },
   { icon: IconPill, label: "Pharmacy Delivery" },
   { icon: IconUrgent, label: "STAT & Emergency Courier" },
-  { icon: IconTruckDelivery, label: "Medical Supply Chain" },
+  { icon: IconTruckDelivery, label: "Medical Supply Distribution" },
   { icon: IconBuildingHospital, label: "Lab-to-Lab Transfer" },
   { icon: IconTemperature, label: "Temperature-Controlled Transport" },
-  { icon: IconLock, label: "HIPAA-Compliant Documentation" },
-  { icon: IconClipboardCheck, label: "Compliance Reporting" }
+  { icon: IconLock, label: "Electronic Chain of Custody" },
+  { icon: IconClipboardCheck, label: "Monthly Performance Reporting" }
 ];
 
 function Logo({ inverse = false }: { inverse?: boolean }) {
@@ -157,15 +159,15 @@ function Hero() {
             Medical Courier Services — Orlando, FL
           </p>
           <h1 className="mb-2 max-w-[580px] text-[34px] font-medium leading-tight text-[var(--op-navy)] max-md:text-[27px]">
-            Zero disruptions. Zero phone calls. Zero surprises.
+            Know where every specimen is. Every time.
           </h1>
           <h2 className="mb-5 text-xl font-medium text-[var(--op-navy)] opacity-75">
-            Orlando&apos;s most reliable medical courier service.
+            Medical courier service built on visibility and documentation.
           </h2>
           <p className="mb-7 max-w-[560px] text-base leading-[1.7] text-[var(--op-gray-text)]">
-            OP Genesis provides GPS-tracked, HIPAA-compliant medical courier services to hospital networks, clinical
-            labs, and pharmacies across Orlando and central Florida — with monthly operational analytics that prove
-            every delivery.
+            OP Genesis offers GPS-tracked medical courier service with electronic chain of custody for hospitals,
+            laboratories, pharmacies, and home health agencies across Orlando and central Florida — plus a monthly
+            performance report that shows exactly how every delivery went.
           </p>
           <div className="hero-actions mb-8 flex flex-wrap gap-3">
             <a className="btn-primary px-6 py-3 text-[15px]" href="#contact">
@@ -205,7 +207,7 @@ function StatsBar() {
               index < 2 ? "max-md:border-b max-md:border-[var(--op-gray-border)]" : ""
             }`}
           >
-            <p className="mb-1 text-[26px] font-medium leading-tight text-[var(--op-navy)]">{stat.value}</p>
+            <p className="mb-1 text-[26px] font-medium leading-tight text-[var(--op-navy)] max-md:text-[19px]">{stat.value}</p>
             <p className="m-0 text-xs text-[var(--op-gray-text)]">{stat.label}</p>
           </div>
         ))}
@@ -221,7 +223,7 @@ function ChainOfCustodyCard() {
     <div className="visual-card">
       <div className="mb-5 flex items-center justify-between">
         <div>
-          <p className="micro-label">Chain of custody</p>
+          <p className="micro-label">Chain of custody · Example</p>
           <p className="mt-1 text-[15px] font-medium text-[var(--op-navy)]">Specimen #A1742</p>
         </div>
         <IconShieldCheck size={22} className="text-[var(--op-green-text)]" />
@@ -250,12 +252,12 @@ function Problem() {
     <section className="section-shell bg-[var(--op-gray-bg)]">
       <div className="content-shell grid grid-cols-[minmax(0,0.95fr)_360px] items-center gap-14 max-lg:grid-cols-1">
         <div>
-          <p className="section-label">How traditional medical couriers fail</p>
+          <p className="section-label">Where medical courier service breaks down</p>
           <h2 className="section-title max-w-[620px]">Your specimen is somewhere on I-4. Nobody knows exactly where.</h2>
           <div className="body-copy mt-6 max-w-[680px] space-y-4">
             <p>
-              Traditional medical courier services in Florida run on radio calls and gut instinct. When a driver hits
-              traffic, a lab tech calls dispatch, dispatch calls the driver, and everyone waits.
+              Many medical couriers still rely on phone calls and manual dispatch. When a driver hits traffic, a lab tech
+              calls dispatch, dispatch calls the driver, and everyone waits.
             </p>
             <p>
               For time-sensitive specimens, STAT medications, and critical medical supplies — that&apos;s not a logistics
@@ -276,14 +278,13 @@ function Solution() {
       <div className="content-shell grid grid-cols-2 items-start gap-12 max-md:flex max-md:flex-col-reverse">
         <div>
           <p className="section-label">The OP Genesis way</p>
-          <h2 className="section-title">The problem is resolved before your team knows it happened.</h2>
+          <h2 className="section-title">You hear about a delay from us — before you have to ask.</h2>
           <div className="body-copy mt-6 max-w-[560px] space-y-4">
             <p>
-              Our dispatch system monitors every driver&apos;s position against live traffic data in real time. When a
-              delay is detected anywhere across our Orlando-area fleet, the pickup is reassigned automatically and your
-              designated contact receives an instant update.
+              Every route is GPS-tracked and monitored by dispatch throughout the day. When traffic or a delay puts a
+              pickup at risk, we re-route and send your designated contact an update with a new ETA.
             </p>
-            <p>No phone trees. No manual dispatch. No specimens left waiting.</p>
+            <p>No phone trees. No chasing the driver. No wondering where your specimen is.</p>
           </div>
         </div>
         <div>
@@ -300,12 +301,12 @@ function Solution() {
           </div>
           <div className="visual-card solution-overlay-card">
             <div className="mb-3.5 flex items-center justify-between gap-4">
-              <p className="m-0 text-[13px] font-medium text-[var(--op-navy)]">OP Genesis Logistics</p>
-              <span className="status-pill">Resolved automatically</span>
+              <p className="m-0 text-[13px] font-medium text-[var(--op-navy)]">Example update</p>
+              <span className="status-pill">Proactive alert</span>
             </div>
             <p className="mb-2.5 text-[13px] leading-[1.6] text-[var(--op-gray-text)]">
-              Your specimen pickup from Lakeside Family Clinic has been reassigned due to traffic on I-4. Driver #7 is
-              en route.
+              Your specimen pickup from Lakeside Family Clinic is delayed by traffic on I-4. Your driver has been
+              re-routed and is en route.
             </p>
             <p className="mb-3.5 text-sm font-medium text-[var(--op-navy)]">New ETA: 2:16 PM</p>
             <div className="flex items-center gap-1.5 border-t border-[var(--op-gray-border)] pt-3 text-xs text-[var(--op-gray-text)]">
@@ -314,7 +315,7 @@ function Solution() {
             </div>
           </div>
           <p className="mt-3 text-[13px] italic text-[var(--op-gray-text)]">
-            Nobody called. Nobody panicked. Resolved before anyone noticed.
+            Illustrative example of the updates clients receive.
           </p>
         </div>
       </div>
@@ -332,7 +333,7 @@ function Pillars() {
             <h2 className="section-title">Built differently from the ground up.</h2>
           </div>
           <p className="heading-sidecopy">
-            A logistics partner built around visibility, automatic recovery, and monthly operational accountability.
+            A logistics partner built around visibility, proactive communication, and monthly operational accountability.
           </p>
         </div>
         <div className="mt-10 grid grid-cols-3 gap-4 max-md:grid-cols-1">
@@ -340,12 +341,12 @@ function Pillars() {
             const Icon = pillar.icon;
             return (
               <article key={pillar.title} className="feature-card">
-                {pillar.title === "Intelligent Dispatch" ? (
+                {pillar.title === "Proactive Dispatch" ? (
                   <Photo
                     name="pillarcard2-intelligent-dispatch"
                     widths={[640, 1024]}
                     sizes="(max-width: 767px) 100vw, 360px"
-                    alt="Dispatcher monitoring live fleet routing screens"
+                    alt="Dispatcher monitoring live route tracking screens"
                     width={1536}
                     height={1024}
                     className="pillar-photo"
@@ -369,29 +370,25 @@ function MonthlyReport() {
       <div className="content-shell grid grid-cols-2 items-start gap-12 max-md:grid-cols-1">
         <div>
           <p className="section-label">Operational analytics</p>
-          <h2 className="section-title">We don&apos;t send invoices. We send intelligence.</h2>
+          <h2 className="section-title">Every invoice comes with a performance report.</h2>
           <div className="body-copy mt-6 max-w-[560px] space-y-4">
-            <p>Every month, OP Genesis clients receive a complete operational report — not just a bill.</p>
+            <p>Every recurring client receives a monthly operational report — not just a bill.</p>
             <p>
-              Delivery volumes, route efficiency, fuel savings, emissions reduction, and data-driven recommendations for
-              the quarter ahead.
+              Delivery volume, on-time performance, average response time, STAT performance, and route
+              recommendations for the month ahead.
             </p>
-            <p>
-              We don&apos;t just move your specimens. We help you understand and improve your entire medical supply
-              chain.
-            </p>
+            <p>You see exactly how your deliveries performed — and what we recommend changing.</p>
             <p>Most couriers tell you what they did. We tell you what to do next.</p>
           </div>
           <p className="mt-5 max-w-[560px] border-t border-[var(--op-gray-border)] pt-5 text-sm leading-[1.7] text-[var(--op-gray-text)]">
-            OP Genesis maintains a 99.6% on-time delivery rate across all active client accounts, with an average
-            delivery time of 32 minutes and an average dispatch response time of 4.2 minutes across our central Florida
-            service area. Client satisfaction is rated 4.9 out of 5.
+            New clients can start with a no-risk 30–60 day pilot route. We track on-time rate, response time, and
+            chain-of-custody completeness from day one, so you can judge us on results.
           </p>
         </div>
         <div className="overflow-hidden rounded-xl border border-[var(--op-gray-border)] bg-white shadow-[0_18px_50px_rgba(10,42,110,0.07)]">
           <div className="bg-[var(--op-navy)] px-5 py-3.5">
-            <p className="mb-[3px] text-[11px] uppercase tracking-[0.06em] text-white/70">Monthly Report · May 2026</p>
-            <p className="m-0 text-sm font-medium text-white">Sample Client · Regional Hospital Network</p>
+            <p className="mb-[3px] text-[11px] uppercase tracking-[0.06em] text-white/70">Monthly Report · Sample format</p>
+            <p className="m-0 text-sm font-medium text-white">Your organization</p>
           </div>
           <div>
             {reportRows.map(([label, value]) => (
@@ -401,9 +398,7 @@ function MonthlyReport() {
               >
                 <span className="text-[13px] text-[var(--op-gray-text)]">{label}</span>
                 <span
-                  className={`text-[13px] font-medium ${
-                    label === "On-time rate" ? "text-[var(--op-green-text)]" : "text-[var(--op-navy)]"
-                  }`}
+                  className="text-[13px] font-medium text-[var(--op-navy)]"
                 >
                   {value}
                 </span>
@@ -415,8 +410,7 @@ function MonthlyReport() {
               Recommendation
             </p>
             <p className="m-0 text-[13px] leading-[1.6] text-[#185fa5]">
-              Move Tuesday afternoon pickup windows 30 minutes earlier — projected 8% improvement in on-time
-              performance.
+              Example: &ldquo;Move Tuesday afternoon pickup windows 30 minutes earlier to avoid peak I-4 traffic.&rdquo;
             </p>
           </div>
         </div>
@@ -459,9 +453,9 @@ function Services() {
           />
         </div>
         <p className="mt-5 max-w-[720px] text-sm leading-[1.7] text-[var(--op-gray-text)]">
-          OP Genesis serves healthcare organizations throughout Orange, Seminole, Osceola, Lake, and Volusia counties.
-          Same-day and scheduled courier routes are available for hospital systems, independent clinics, reference
-          laboratories, and pharmacy networks.
+          Our service area covers Orange, Seminole, Osceola, Lake, and Volusia counties. Scheduled routes and same-day
+          STAT delivery are available for hospitals, independent laboratories, pharmacies, medical suppliers, and home
+          health agencies.
         </p>
         <div className="mt-10 grid grid-cols-4 gap-3 max-md:grid-cols-2">
           {services.map((service) => {
@@ -489,13 +483,13 @@ function Why() {
           <div className="body-copy mt-6 max-w-[650px] space-y-5">
             <p>Any courier can pick up a package.</p>
             <p>
-              OP Genesis provides a complete medical logistics infrastructure — GPS tracking on every vehicle, digital
-              chain of custody on every delivery, automatic rerouting on every disruption, and operational analytics
-              delivered to every client every month.
+              OP Genesis builds visibility into every contract — GPS tracking on every route, electronic chain of
+              custody and digital proof of delivery on every handoff, proactive updates when something changes, and a
+              performance report every month.
             </p>
             <p>
-              We move medical supplies. We also help you predict when you&apos;ll need more of them, where your
-              bottlenecks are forming, and how to run your supply chain more efficiently.
+              We move your specimens and supplies — and show you where delays and bottlenecks are forming, so your
+              team can plan around them.
             </p>
             <p className="text-[17px] font-medium leading-[1.4] text-[var(--op-navy)]">
               That&apos;s not a courier service.
@@ -505,12 +499,12 @@ function Why() {
           </div>
         </div>
         <div className="visual-card overflow-hidden">
-          <p className="micro-label">Network health</p>
+          <p className="micro-label">Included as standard</p>
           <div className="mt-4 space-y-3">
             {[
-              ["Digital chain of custody", "100% documented"],
-              ["Automatic rerouting", "Live"],
-              ["Monthly reporting", "Included"]
+              ["Electronic chain of custody", "Every delivery"],
+              ["GPS route tracking", "Every route"],
+              ["Monthly performance report", "Included"]
             ].map(([label, value]) => (
               <div key={label} className="score-row">
                 <span>{label}</span>
@@ -532,11 +526,10 @@ function About() {
     <section id="about" className="scroll-mt-16 bg-[var(--op-gray-bg)] px-6 py-12">
       <div className="mx-auto max-w-[760px] rounded-2xl border border-[var(--op-gray-border)] bg-white px-8 py-7 text-center shadow-[0_14px_40px_rgba(10,42,110,0.04)] max-md:px-5">
         <p className="m-0 text-sm leading-[1.8] text-[var(--op-gray-text)]">
-          OP Genesis is a HIPAA-compliant healthcare logistics company based in Orlando, Florida. Founded to serve the
-          operational needs of hospital networks, clinical laboratories, and pharmacies across central Florida, OP
-          Genesis provides GPS-tracked specimen transport, STAT courier services, pharmaceutical delivery, and monthly
-          operational analytics to healthcare organizations that require reliability at scale. OP Genesis is licensed,
-          insured, and registered with the Florida Department of Health.
+          OP Genesis is a healthcare logistics company based in Orlando, Florida, built to serve hospitals, independent
+          laboratories, pharmacies, medical suppliers, and home health agencies across central Florida. Every route
+          includes GPS tracking, electronic chain of custody, digital proof of delivery, and a monthly operational
+          performance report — standard, not an upsell.
         </p>
       </div>
     </section>
@@ -582,13 +575,13 @@ function FinalCTA() {
           Built for healthcare networks that demand more than a driver.
         </h2>
         <p className="mx-auto mb-7 max-w-[440px] text-[15px] leading-[1.7] text-white/65">
-          Schedule a 20-minute call and we&apos;ll show you exactly what reliable medical logistics looks like for your
-          operation. No commitment. Just the platform.
+          Schedule a 20-minute call. We&apos;ll review your routes and requirements and propose a no-risk 30–60 day
+          pilot route — so you can judge us on tracked results, not promises.
         </p>
         <a className="btn-teal px-8 py-3.5 text-[15px]" href={demoMailto}>
           Book a Demo
         </a>
-        <p className="mt-3.5 text-[13px] text-white/65">We typically respond within one business day.</p>
+        <p className="mt-3.5 text-[13px] text-white/65">We aim to respond within one business day.</p>
       </div>
     </section>
   );
@@ -637,11 +630,11 @@ function Footer() {
         </div>
         <div className="mt-12 flex items-center justify-between gap-6 border-t border-white/10 pt-6 max-md:flex-col max-md:items-start">
           <p className="m-0 flex flex-wrap gap-3 text-xs text-white/65">
-            <span>HIPAA Compliant</span>
+            <span>GPS-Tracked Routes</span>
             <span>·</span>
-            <span>Florida DOH Registered</span>
+            <span>Electronic Chain of Custody</span>
             <span>·</span>
-            <span>Licensed & Insured</span>
+            <span>Monthly Performance Reports</span>
           </p>
           <p className="m-0 max-w-[520px] text-xs text-white/60">
             OP Genesis Healthcare Logistics Solutions Serving Orlando, Orange County, Seminole County, Osceola County,

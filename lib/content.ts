@@ -13,7 +13,7 @@ export const site = {
   region: "FL",
   postalCode: "32856",
   description:
-    "GPS-tracked, HIPAA-compliant medical courier services for hospitals, labs, and pharmacies in Orlando, FL. Real-time dispatch. Monthly analytics. Request a demo."
+    "GPS-tracked medical courier service with electronic chain of custody for hospitals, labs, and pharmacies in Orlando, FL. Monthly performance reports included. Request a demo."
 };
 
 export const demoMailto = `mailto:${site.email}?subject=${encodeURIComponent("OP Genesis Demo Request")}`;
@@ -25,31 +25,31 @@ export const faqs = [
   {
     question: "What areas does OP Genesis serve?",
     answer:
-      "OP Genesis provides medical courier services throughout the Orlando metropolitan area and central Florida, including Orange, Seminole, Osceola, Lake, and Volusia counties. Service area expansions are available for healthcare networks with multi-location needs across the state."
+      "OP Genesis provides medical courier services throughout the Orlando metropolitan area and central Florida, including Orange, Seminole, Osceola, Lake, and Volusia counties. Contact us about locations outside this area."
   },
   {
-    question: "Is OP Genesis HIPAA compliant?",
+    question: "How does OP Genesis protect patient privacy?",
     answer:
-      "Yes. OP Genesis maintains full HIPAA compliance on all deliveries, including digital chain of custody documentation, secure handling protocols, and trained staff requirements. Compliance documentation is available upon request."
+      "Our handling procedures are built around HIPAA requirements. Drivers complete HIPAA awareness and chain-of-custody training before running routes, and every handoff is documented electronically. We'll walk your compliance team through our privacy and handling procedures before service starts."
   },
   {
     question: "What types of medical items does OP Genesis transport?",
     answer:
-      "OP Genesis transports laboratory specimens, STAT and emergency deliveries, pharmaceutical medications, medical supplies, temperature-controlled items, and lab-to-lab transfers for hospital networks, clinical laboratories, and pharmacies across Florida."
+      "OP Genesis transports laboratory specimens, STAT and emergency deliveries, pharmaceutical medications, medical supplies, temperature-controlled items, and lab-to-lab transfers for hospitals, laboratories, pharmacies, medical suppliers, and home health agencies across central Florida."
   },
   {
     question: "How does OP Genesis handle delivery delays?",
     answer:
-      "Our dispatch system monitors every driver's position in real time against live traffic data. When a delay is detected, the pickup is automatically reassigned to a nearby driver and your designated contact receives an immediate text and email update — before the delay affects your operation. No phone calls required."
+      "Every route is GPS-tracked and monitored by dispatch throughout the day. When traffic or a delay puts a pickup at risk, we re-route and send your designated contact an update with a new ETA — so you hear about it from us, not after the fact."
   },
   {
     question: "Does OP Genesis provide proof of delivery?",
     answer:
-      "Yes. Every delivery includes digital chain of custody documentation with timestamped pickup and delivery confirmation, driver identification, and recipient sign-off. Records are available through your client portal."
+      "Yes. Every delivery includes digital chain of custody documentation with timestamped pickup and delivery confirmation, driver identification, and recipient sign-off. Records are summarized in your monthly report and available on request."
   },
   {
     question: "How do I start service with OP Genesis?",
     answer:
-      "Request a 20-minute demo call through our website. We'll review your pickup locations, delivery volume, and service requirements, then provide a tailored proposal within one business day."
+      "Request a 20-minute call through our website. We'll review your pickup locations, delivery volume, and service requirements, then send a tailored proposal. New clients can start with a no-risk 30–60 day pilot route with tracked on-time, response-time, and chain-of-custody results."
   }
 ];
